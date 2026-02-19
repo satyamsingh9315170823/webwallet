@@ -21,7 +21,7 @@ function App() {
           <div className="flex items-center gap-6 text-sm text-zinc-400">
             
             <a
-              href="https://github.com/yourrepo"
+              href="https://github.com/satyamsingh9315170823/webwallet"
               target="_blank"
               className="flex items-center gap-2 hover:text-white transition"
             >
@@ -30,7 +30,7 @@ function App() {
             </a>
 
             <a
-              href="https://twitter.com/yourhandle"
+              href="https://x.com/satyamsingh823"
               target="_blank"
               className="flex items-center gap-2 hover:text-white transition"
             >
