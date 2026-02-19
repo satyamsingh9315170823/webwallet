@@ -4,7 +4,7 @@ import { Keypair } from "@solana/web3.js";
 
 
 
-// generate mnemonic
+
 export function generateMnemonic() {
   return ethers.utils.entropyToMnemonic(
     ethers.utils.randomBytes(16)
@@ -12,7 +12,7 @@ export function generateMnemonic() {
 }
 
 
-// Ethereum wallet
+
 export function createEthereumWallet(mnemonic) {
   const hdNode = ethers.utils.HDNode.fromMnemonic(mnemonic);
   const wallet = hdNode.derivePath("m/44'/60'/0'/0/0");
@@ -25,7 +25,6 @@ export function createEthereumWallet(mnemonic) {
 
 
 
-// Solana wallet (FIXED)
 export async function createSolanaWallet(mnemonic) {
   const seedHex = await ethers.utils.mnemonicToSeed(mnemonic);
 
@@ -44,7 +43,7 @@ export async function createSolanaWallet(mnemonic) {
 }
 
 
-// Generate wallets
+
 export async function generateAllWallets() {
   const mnemonic = generateMnemonic();
 
