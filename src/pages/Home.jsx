@@ -74,66 +74,73 @@ export default function Home() {
       </section>
 
       {/* SEED PHRASE */}
-      {mnemonic && (
-        <div className="bg-zinc-900 p-8 rounded-3xl border border-zinc-800 mb-20 shadow-xl">
-          
-          <div className="flex justify-between items-center mb-6">
-            <h2 className="text-2xl font-bold text-white">
-              Secret Recovery Phrase
-            </h2>
+     {mnemonic && (
+  <div className="bg-zinc-900 p-5 sm:p-8 rounded-3xl border border-zinc-800 mb-20 shadow-xl">
 
-            <div className="flex gap-2">
-              <button
-                onClick={() => setShowSeed(!showSeed)}
-                className="px-3 py-1.5 bg-zinc-800 hover:bg-zinc-700 
-                           rounded-md text-xs font-medium transition"
-              >
-                {showSeed ? "Hide" : "Show"}
-              </button>
-
-              <button
-                onClick={copySeed}
-                className="px-3 py-1.5 bg-white text-black 
-                           hover:bg-zinc-200 rounded-md 
-                           text-xs font-medium transition"
-              >
-                {seedCopied ? "Copied ✓" : "Copy"}
-              </button>
-            </div>
-          </div>
-
-          <p className="text-zinc-500 text-sm mb-6">
-            Write these words down in order. Anyone with this phrase can access your wallet.
-          </p>
-
-          <div className="max-w-4xl mx-auto grid grid-cols-3 md:grid-cols-4 gap-4">
-  {mnemonic.split(" ").map((word, i) => (
-    <div
-      key={i}
-      className={`flex items-center gap-2
-                  bg-black hover:bg-zinc-900
-                  px-4 py-4 rounded-lg
-                  border border-zinc-800
-                  text-lg font-bold
-                  transition duration-200
-                  ${!showSeed && "blur-sm select-none"}`}
-    >
-      {/* Number badge */}
-      <div className="w-6 h-6 flex items-center justify-center
-                      rounded bg-zinc-800 text-zinc-400 text-[14px]">
-        {i + 1}
+    {/* Header */}
+    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+      
+      <div>
+        <h2 className="text-xl sm:text-2xl font-bold text-white">
+          Secret Recovery Phrase
+        </h2>
+        <p className="text-zinc-500 text-sm mt-1 max-w-md">
+          Write these words down in order. Anyone with this phrase can access your wallet.
+        </p>
       </div>
 
-      {/* Word */}
-      <span className="text-zinc-100 truncate">
-        {word}
-      </span>
-    </div>
-  ))}
-</div>
+      <div className="flex gap-2">
+        <button
+          onClick={() => setShowSeed(!showSeed)}
+          className="px-3 py-1.5 bg-zinc-800 hover:bg-zinc-700 rounded-md text-xs font-medium transition"
+        >
+          {showSeed ? "Hide" : "Show"}
+        </button>
 
+        <button
+          onClick={copySeed}
+          className="px-3 py-1.5 bg-white text-black hover:bg-zinc-200 rounded-md text-xs font-medium transition"
+        >
+          {seedCopied ? "Copied ✓" : "Copy"}
+        </button>
+      </div>
+    </div>
+
+    {/* WORD GRID */}
+    <div className="
+      mx-auto grid 
+      grid-cols-2 sm:grid-cols-3 md:grid-cols-4 
+      gap-2 sm:gap-4
+      max-w-xl sm:max-w-3xl
+    ">
+      {mnemonic.split(" ").map((word, i) => (
+        <div
+          key={i}
+          className={`flex items-center gap-2
+                      bg-black hover:bg-zinc-900
+                      px-3 py-3 sm:px-4 sm:py-4
+                      rounded-lg border border-zinc-800
+                      text-sm sm:text-base font-semibold
+                      transition duration-200
+                      ${!showSeed && "blur-sm select-none"}`}
+        >
+          {/* Number badge */}
+          <div className="w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center
+                          rounded bg-zinc-800 text-zinc-400 text-[10px] sm:text-xs">
+            {i + 1}
+          </div>
+
+          {/* Word */}
+          <span className="text-zinc-100 truncate">
+            {word}
+          </span>
         </div>
-      )}
+      ))}
+    </div>
+
+  </div>
+)}
+
 
       {/* WALLET CARDS */}
       <div className="grid md:grid-cols-2 gap-8 pb-24">
